@@ -1,0 +1,2 @@
+# fremen
+Local AI Agent 
