@@ -1,0 +1,5 @@
+conda create -n chaselogin python==3.11 python
+conda activate chaselogin
+pip install pyautogui
+pip install opencv-python
+

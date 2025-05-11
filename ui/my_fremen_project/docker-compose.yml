@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  server:
+    build: ./server
+    container_name: fremen_flask_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+    depends_on:
+      - client
+
+  client:
+    build: ./client
+    container_name: fremen_react_client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
