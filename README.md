@@ -2,6 +2,8 @@
 
 A local agentic AI for automating tasks and workflows
 
+<img src="logo.png" alt=" logo" style="height: 300px;"/>
+
 ## Setup your environment 
 in your anaconda prompt do the following 
 ```
