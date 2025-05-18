@@ -1,17 +1,46 @@
-
-import pyautogui
 import time
-import pygetwindow as gw
 import os
 import json
-import ollama
-import pyperclip
 import re
-import json
-import cv2 
-from retinaface import RetinaFace
-from PIL import Image
-import numpy as np
+try:
+    import pyautogui
+except ImportError:  # pragma: no cover - optional dependency
+    pyautogui = None
+
+try:
+    import pygetwindow as gw
+except ImportError:  # pragma: no cover - optional dependency
+    gw = None
+
+try:
+    import ollama
+except ImportError:  # pragma: no cover - optional dependency
+    ollama = None
+
+try:
+    import pyperclip
+except ImportError:  # pragma: no cover - optional dependency
+    pyperclip = None
+
+try:
+    import cv2
+except ImportError:  # pragma: no cover - optional dependency
+    cv2 = None
+
+try:
+    from retinaface import RetinaFace
+except ImportError:  # pragma: no cover - optional dependency
+    RetinaFace = None
+
+try:
+    from PIL import Image
+except ImportError:  # pragma: no cover - optional dependency
+    Image = None
+
+try:
+    import numpy as np
+except ImportError:  # pragma: no cover - optional dependency
+    np = None
 
 def clean_string(text):
     # Remove extra newlines and spaces while preserving the JSON structure
@@ -25,9 +54,7 @@ def extract_json(text):
     text = clean_string(text)
     
     # Find content between ```json and ``` using regex
-    # json_match = re.search(r'```json\s*(\[[\s\S]*?\])\s*```', text)
     json_match = re.search(r"```(?:json)?\s*(\[[\s\S]*?\])\s*```", text)
-    json_match = re.search(r'```(?:json)?\s*(\[[\s\S]*?\])\s*```', text)
 
     if json_match:
         json_str = json_match.group(1)
@@ -67,11 +94,9 @@ class Fremen:
         else:
             print(image_path, "not found on page")
 
-    def if_image_exists(image_path: str, wait_time:int, confidence = 0.7):
-        if pyautogui.locateOnScreen(image_path, confidence):
-            return True
-        else:
-            return False
+    def if_image_exists(self, image_path: str, confidence: float = 0.7) -> bool:
+        """Check if an image exists on screen."""
+        return pyautogui.locateOnScreen(image_path, confidence) is not None
         
     def wait(self, seconds: int):
         time.sleep(seconds)
@@ -86,34 +111,7 @@ class Fremen:
         if image is None:
             raise ValueError("Invalid image path provided!")
     
-        faces = RetinaFace.extract_faces(img_path = "delete_later.png", align = False)
-        """
-        
-        
-        
-        # Convert the image to grayscale for better detection
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    
-        # Load Haar cascade for face detection
-        face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-    
-        # Detect faces in the image
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=7, minSize=(25, 25))
-        
-        
-        if len(faces) == 0:
-           raise ValueError("No faces detected in the image!")
-    
-        # Assuming the first detected face is the one to crop
-        x, y, w, h = faces[0]
-    
-        # Crop the image to the face
-        cropped_image = image[y:y+h, x:x+w]
-        
-
-        # Save the cropped image
-        cv2.imwrite(outputfile, cropped_image)
-        """
+        faces = RetinaFace.extract_faces(img_path="delete_later.png", align=False)
         if len(faces) == 0:
            raise ValueError("No faces detected in the image!")
     
