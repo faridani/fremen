@@ -1,17 +1,17 @@
-"""
-auth_routes.py
-Routes for user registration, login, and logout.
-"""
+"""Routes handling user authentication."""
 
 from flask import Blueprint, request, jsonify, session
 from passlib.hash import pbkdf2_sha256
 from database import db
 from models import User
 
+# Blueprint that groups authentication related endpoints
 auth_bp = Blueprint("auth", __name__)
+
 
 @auth_bp.route("/register", methods=["POST"])
 def register():
+    """Create a new user account."""
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
@@ -19,21 +19,19 @@ def register():
     if not username or not password:
         return jsonify({"error": "Missing username or password"}), 400
 
-    # Check if user already exists
-    existing_user = User.query.filter_by(username=username).first()
-    if existing_user:
+    if User.query.filter_by(username=username).first():
         return jsonify({"error": "Username already exists"}), 400
 
-    # Hash the password
     password_hash = pbkdf2_sha256.hash(password)
     user = User(username=username, password_hash=password_hash)
     db.session.add(user)
     db.session.commit()
-
     return jsonify({"message": "User registered successfully"}), 201
+
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
+    """Authenticate a user and start a session."""
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
@@ -48,11 +46,13 @@ def login():
     if not pbkdf2_sha256.verify(password, user.password_hash):
         return jsonify({"error": "Invalid password"}), 401
 
-    # Store user info in session
     session["user_id"] = user.id
     return jsonify({"message": "Login successful", "user_id": user.id}), 200
 
+
 @auth_bp.route("/logout", methods=["POST"])
 def logout():
+    """Clear the current user session."""
     session.pop("user_id", None)
     return jsonify({"message": "Logout successful"}), 200
+
