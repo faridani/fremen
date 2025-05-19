@@ -1,6 +1,6 @@
 # Fremen AI
 
-A local agentic AI for automating tasks and workflows
+A local agent framework for building complex AI agents 
 
 <img src="logo.png" alt=" logo" style="height: 300px;"/>
 
