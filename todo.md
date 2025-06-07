@@ -16,7 +16,7 @@ Microsoft OmniParser is an open-source screen parsing tool designed to enhance A
 *UI-TARS by ByteDance*: This is a native GUI agent model that perceives screenshots and performs human-like interactions, such as keyboard and mouse operations. It integrates perception, reasoning, grounding, and memory into a unified vision-language model, supporting cross-platform use (desktop, mobile, web). You can explore it further at GitHub Repository and Research Paper. 
 * https://github.com/bytedance/UI-TARS
 * https://arxiv.org/abs/2501.12326
-
+* https://github.com/bytedance/UI-TARS-desktop
 
 *UGround by OSU NLP Group and Orby AI*: UGround is a universal visual grounding model that locates UI elements by pixel coordinates, trained on large-scale screenshot datasets. It's part of the SeeAct-V framework, enabling purely vision-based GUI agents. Check it out at GitHub Repository and Project Homepage.
 https://osu-nlp-group.github.io/UGround/
