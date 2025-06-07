@@ -6,8 +6,12 @@
 * Integrate with Microsoft OmniParser https://www.microsoft.com/en-us/research/articles/omniparser-v2-turning-any-llm-into-a-computer-use-agent/
 * Integrate with UI-TARS, UGround, and AGUVIS
 * Browser-use: https://github.com/browser-use/web-ui
+* https://microsoft.github.io/WindowsAgentArena/
+* https://github.com/Agent-Tools/awesome-autonomous-web
+* https://arxiv.org/pdf/2506.03569
+* https://apply.ycombinator.com/apps/ff0397a8-ec8e-45ba-b19f-f64e66560b9a
 
-
+  
 More on the libraries mentioned:
 
 Microsoft OmniParser is an open-source screen parsing tool designed to enhance AI agents' ability to interact with graphical user interfaces (GUIs) by converting screenshots into structured, actionable elements. It leverages vision-based models, such as GPT-4V, to identify interactable UI components like icons and buttons, providing precise pixel coordinates and semantic understanding for tasks like clicking or typing. OmniParser supports cross-platform GUI interactions across web, desktop, and mobile environments, making it valuable for automating tasks in diverse applications. Its lightweight, modular design and open-source availability on GitHub make it accessible for developers to integrate into vision-based GUI agents, with performance validated on benchmarks like ScreenSpot-Pro.
