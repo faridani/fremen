@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fremen.AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #222;
+            color: #e0d8c3;
+            line-height: 1.6;
+        }
+        header, section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            color: #f0e6d2;
+        }
+        h2 {
+            color: #c19a6b;
+        }
+        button {
+            background-color: #c19a6b;
+            color: #222;
+            border: none;
+            padding: 12px 30px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .demo-form input {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: none;
+        }
+        .section-dark {
+            background-color: #1a1a1a;
+        }
+        #flow {
+            height: 300px;
+            background: #333;
+            margin-top: 40px;
+        }
+    </style>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <link href="https://unpkg.com/reactflow/dist/style.css" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/reactflow/dist/reactflow.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/javascript">
+        const { useState } = React;
+        const initialNodes = [
+            { id: '1', position: { x: 50, y: 50 }, data: { label: 'Start' } },
+            { id: '2', position: { x: 200, y: 50 }, data: { label: 'Workflows' } },
+            { id: '3', position: { x: 350, y: 50 }, data: { label: 'Automate' } },
+        ];
+        const initialEdges = [
+            { id: 'e1-2', source: '1', target: '2' },
+            { id: 'e2-3', source: '2', target: '3' },
+        ];
+
+        function MainSection() {
+            return (
+                React.createElement('section', null,
+                    React.createElement('h1', null, 'The Smartest Desktop, Web and Mobile Agent on the Market'),
+                    React.createElement('h2', null, 'The most reliable desktop and web AI Agent'),
+                    React.createElement('p', null, 'Local first, enterprise ready. See. Learn. Automate. All on your machine.'),
+                    React.createElement('p', null, `Fremen is revolutionizing the way businesses operate by harnessing powerful desktop and web agents to eliminate repetitive tasks. With no coding required, our agent automation solutions empower users to streamline workflows, effortlessly handle browsers, and execute complex online and desktop interactions.`),
+                    React.createElement('p', null, `By using the latest AI techniques and models Fremen delivers unparalleled efficiency and reliability. Our robust platform provides comprehensive automation capabilities, including visual understanding, precise HTML extraction, and self-correcting actions to ensure consistent and accurate task execution.`),
+                    React.createElement('p', null, `Whether you need to extract data, perform research, or manage complex processes, Fremen’s agent makes automation accessible and straightforward. Enjoy unmatched performance and security, supported by powerful bot protection, mobile proxies, and a fully hosted infrastructure.`),
+                    React.createElement('p', null, `Trusted by leading enterprises, Fremen combines cutting-edge AI with human-in-the-loop oversight, ensuring automation that's not only powerful but also reliable and secure. Join the automation revolution today and transform your workflow with Fremen.`),
+                    React.createElement('div', { className: 'demo-form' },
+                        React.createElement('input', { type: 'email', placeholder: 'Your email' }),
+                        React.createElement('button', null, 'Request a demo')
+                    ),
+                    React.createElement('button', null, 'Become a customer'),
+                    React.createElement('button', null, 'Let us automate your processes'),
+                    React.createElement('div', { id: 'flow' },
+                        React.createElement(ReactFlow.ReactFlow, { nodes: initialNodes, edges: initialEdges, fitView: true })
+                    )
+                )
+            );
+        }
+
+        function BecomeCustomer() {
+            return (
+                React.createElement('section', { className: 'section-dark' },
+                    React.createElement('h2', null, 'Become a customer'),
+                    React.createElement('p', null, 'Partner with Fremen to cut operational costs by 70% with AI that understands context, not just scripts.')
+                )
+            );
+        }
+
+        function Technologies() {
+            return (
+                React.createElement('section', null,
+                    React.createElement('h2', null, 'Technologies'),
+                    React.createElement('p', null, 'We use the latest technologies n8n, langchain and langflow in addition to the latest reinforcement learning techniques like GRPO to automate your work.')
+                )
+            );
+        }
+
+        function App() {
+            return React.createElement('div', null,
+                React.createElement(MainSection, null),
+                React.createElement(BecomeCustomer, null),
+                React.createElement(Technologies, null)
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+    </script>
+</body>
+</html>
