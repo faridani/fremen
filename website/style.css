@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #3F404C;
+  color: #ECEADF;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+section {
+  margin-bottom: 60px;
+}
+h1, h2 {
+  color: #FE6726;
+  margin-bottom: 20px;
+}
+button, input[type="submit"] {
+  background-color: #FE6726;
+  color: #ECEADF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:hover, input[type="submit"]:hover {
+  opacity: 0.9;
+}
+.demo-box {
+  background-color: #DFD4CA;
+  color: #3F404C;
+  padding: 20px;
+  border-radius: 8px;
+}
